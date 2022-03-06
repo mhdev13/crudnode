@@ -1,13 +1,14 @@
 const koneksi = require ('../config/database');
 const { responseData, responseMessage } = require ('../utils/response-handler');
+const ErrorResponse = require ('../utils/errorResponse');
 
 //insert bootcamp
-exports.insertBootcamp = (response,statement,data) => {
+exports.insertBootcamp = (response,statement,data,next) => {
     //jalankan query
     koneksi.query(statement, data, (err, rows, field) => {
         //error handling 
         if(err){
-            return res.status(500).json({ message: 'Gagal insert data!', error: err});
+            return next(new ErrorResponse(err.message,500));
         }
 
         //jika request berhasil
@@ -16,12 +17,12 @@ exports.insertBootcamp = (response,statement,data) => {
 }
 
 //get data bootcamp
-exports.getBootcamps = (response, statement) => {
+exports.getBootcamps = (response, statement, next) => {
     //jalankan query
     koneksi.query(statement, (err, rows, field) => {
         //error handling
         if(err){
-            return response.status(500).json({ message: 'Ada kesalahan', error: err});
+            return next(new ErrorResponse(err.message,500));
         }
 
         //jika request berhasil
@@ -35,7 +36,7 @@ exports.updateBootcamp = (response, searchStatement, updateStatement, id, data) 
     koneksi.query(searchStatement,id, (err, rows, field) => {
         //error handling
         if(err){
-            return response.status(500).json({ message :'Ada kesalahan', error:err});
+            return next(new ErrorResponse(err.message,500));
         }
 
         //jika id yang dimasukan sesuai sesuai dengan data yang ada di db
@@ -44,7 +45,7 @@ exports.updateBootcamp = (response, searchStatement, updateStatement, id, data) 
             koneksi.query(updateStatement, [data,id], (err, rows, field) =>{
                 //error handling 
                 if (err){
-                    return response.status(500).json({ message: 'Ada kesalahan', error:err});
+                    return next(new ErrorResponse(err.message,500));
                 }
 
                 //jika update berhasil
@@ -57,12 +58,12 @@ exports.updateBootcamp = (response, searchStatement, updateStatement, id, data) 
 };
 
 //delete bootcamp
-exports.deleteBootcamp = (response, searchStatement, deleteStatement, id) => {
+exports.deleteBootcamp = (response, searchStatement, deleteStatement, id, next) => {
     //jalankan query untuk melakukan pencarian data
     koneksi.query(searchStatement, id, (err,rows,field) => {
         //error handling
         if(err){
-            return response.status(500).json({ message: 'Ada kesalahan', error: err});
+            return next(new ErrorResponse(err.message, 500));
         }
 
         //jika id yang dimasukan sesuai dengan data yang ada di db 
@@ -71,14 +72,14 @@ exports.deleteBootcamp = (response, searchStatement, deleteStatement, id) => {
             koneksi.query(deleteStatement, id, (err,rows, field) =>{
                 //error handling 
                 if(err){
-                    return response.status(500).json({ message : 'Ada kesalahan', error: err});
+                    return next(new ErrorResponse(err.message,500));
                 }
 
                 //jika delete berhasil
                 responseMessage(response, 200, 'Berhasil hapus data!');
             });
         } else {
-            return response.status(404).json({ succes:false, message:'Data tidak ditemukan!' });
+            return next(new ErrorResponse('Data tidak ditemukan!', 500));
         }
     });
 }
