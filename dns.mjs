@@ -11,7 +11,7 @@ const options = {
 	
 	// Address from lookup function
 	const addresses = await dns.lookup(
-					'geeksforgeeks.org', options);
+		'maungaji.co.id', options);
 	
 	// Printing addressescl
 	console.log("from async: ");
