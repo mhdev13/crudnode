@@ -22,7 +22,7 @@ exports.createData = (req, res, next) => {
 //show bootcamps
 exports.readData = (req,res,next) => {
     //buat query sql
-    const querySql = 'SELECT * FROM bootcamp';
+    const querySql = 'SELECT * FROM testimoni';
 
     //masukan ke dalam model
     getBootcamps(res, querySql, next);

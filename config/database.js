@@ -5,7 +5,7 @@ const koneksi = mysql.createConnection({
     host : 'localhost',
     user : 'sysdb',
     password : '4ktnbOU2hDLmHsaZ',
-    database : 'bootcamp',
+    database : 'maungaji_army',
     multipleStatements : true
 });
 
