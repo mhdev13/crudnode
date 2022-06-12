@@ -5,7 +5,8 @@ const userRouter        = require('./routes/user-router');
 const testimoniRouter   = require('./routes/testimoni-router');
 const faqRouter         = require('./routes/faq-router');
 const priceRouter       = require('./routes/price-router');
-const reportRouter       = require('./routes/report-router');
+const reportRouter      = require('./routes/report-router');
+const partnerRouter     = require('./routes/partner-router');
 
 const errorHandler      = require('./middleware/error');
 const app               = express();
@@ -22,6 +23,7 @@ app.use('/api/testimoni', testimoniRouter);
 app.use('/api/faq', faqRouter);
 app.use('/api/price', priceRouter);
 app.use('/api/report', reportRouter);
+app.use('/api/partner', partnerRouter);
 
 //set error middleware
 app.use(errorHandler);
