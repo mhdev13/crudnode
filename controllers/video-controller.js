@@ -22,7 +22,7 @@ exports.createData = (req, res, next) => {
 //show Videos
 exports.readData = (req,res,next) => {
     //buat query sql
-    const querySql = 'SELECT * FROM mau_video';
+    const querySql = 'SELECT video, description FROM mau_video';
 
     //masukan ke dalam model
     getVideos(res, querySql, next);

@@ -22,7 +22,7 @@ exports.createData = (req, res, next) => {
 //show Testimonis
 exports.readData = (req,res,next) => {
     //buat query sql
-    const querySql = 'SELECT * FROM testimoni';
+    const querySql = 'SELECT fullname,photo,comment FROM testimoni';
 
     //masukan ke dalam model
     getTestimonis(res, querySql, next);

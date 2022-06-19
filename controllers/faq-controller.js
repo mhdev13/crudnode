@@ -22,7 +22,7 @@ exports.createData = (req, res, next) => {
 //show Faqs
 exports.readData = (req,res,next) => {
     //buat query sql
-    const querySql = 'SELECT * FROM cms_faq';
+    const querySql = 'SELECT question,answer FROM cms_faq';
 
     //masukan ke dalam model
     getFaqs(res, querySql, next);
