@@ -22,7 +22,7 @@ exports.createData = (req, res, next) => {
 //show Partners
 exports.readData = (req,res,next) => {
     //buat query sql
-    const querySql = 'SELECT photo,url FROM mau_partner';
+    const querySql = 'SELECT photo,url,description FROM mau_partner';
 
     //masukan ke dalam model
     getPartners(res, querySql, next);
