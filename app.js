@@ -1,4 +1,5 @@
 const express           = require('express');
+const cors              = require('cors');
 const bodyParser        = require('body-parser');
 const bootcampRouter    = require('./routes/bootcamp-router');
 const userRouter        = require('./routes/user-router');
@@ -16,6 +17,7 @@ const PORT              = process.env.PORT || 5000;
 //set body parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
 
 //set routing 
 app.use('/api/bootcamp', bootcampRouter);
