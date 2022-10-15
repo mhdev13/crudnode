@@ -2,10 +2,10 @@ const mysql = require('mysql');
 
 //buat konfigurasi koneksi
 const koneksi = mysql.createConnection({
-    host : 'localhost',
-    user : 'sysdb',
-    password : '4ktnbOU2hDLmHsaZ',
-    database : 'maungaji_army',
+    host : '103.129.222.7',
+    user : 'maungaji_admin',
+    password : 'Ahmad@123456!',
+    database : 'maungaji_cms',
     multipleStatements : true
 });
 
