@@ -16,7 +16,7 @@ const app               = express();
 const PORT              = process.env.PORT || 5000;
 
 const db = require('./models');
-db.sequelize.sync();
+// db.sequelize.sync();
 
 //set body parser
 app.use(bodyParser.json());
@@ -34,7 +34,7 @@ app.use('/api/price', priceRouter);
 app.use('/api/report', reportRouter);
 app.use('/api/partner', partnerRouter);
 app.use('/api/video', videoRouter);
-app.use('/api/book', bookRouter);
+// app.use('/api/book', bookRouter);
 
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
