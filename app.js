@@ -9,6 +9,8 @@ const priceRouter       = require('./routes/price-router');
 const reportRouter      = require('./routes/report-router');
 const partnerRouter     = require('./routes/partner-router');
 const videoRouter       = require('./routes/video-router');
+const mentorRouter      = require('./routes/mentor-router');
+
 const bookRouter        = require('./routes/book.routes');
 
 const errorHandler      = require('./middleware/error');
@@ -34,6 +36,8 @@ app.use('/api/price', priceRouter);
 app.use('/api/report', reportRouter);
 app.use('/api/partner', partnerRouter);
 app.use('/api/video', videoRouter);
+app.use('/api/mentor', mentorRouter);
+
 // app.use('/api/book', bookRouter);
 
 app.use(function (req, res, next) {
