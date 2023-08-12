@@ -1,4 +1,4 @@
-const { insertMentor, getMentors, updateMentor, deleteMentor } = require('../models/Mentor-model');
+const { insertMentor, getMentors, updateMentor, deleteMentor } = require('../models/mentor-model');
 const { validateMentor } = require ('../utils/validation');
 const ErrorResponse = require('../utils/errorResponse');
 const { response } = require('express');
