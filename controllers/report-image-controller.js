@@ -7,7 +7,7 @@ const { response } = require('express');
 exports.createData = (req, res, next) => {
     //buat variable penampung data dan query sql
     const data = {...req.body};
-    const querySql = 'INSERT INTO cms_monthly_report SET ?';
+    const querySql = 'INSERT INTO cms_image_report SET ?';
     
     //validasi
     var errors = validateReport(data);
@@ -22,7 +22,7 @@ exports.createData = (req, res, next) => {
 //show Reports
 exports.readData = (req,res,next) => {
     //buat query sql
-    const querySql = 'SELECT SUM(COUNT) AS report FROM cms_monthly_report';
+    const querySql = 'SELECT photo FROM cms_image_report ORDER BY id DESC LIMIT 1';
 
     //masukan ke dalam model
     getReports(res, querySql, next);
@@ -32,8 +32,8 @@ exports.readData = (req,res,next) => {
 exports.updateData = (req,res,next) => {
     //buat variabel penampung data dan query sql
     const data = { ...req.body};
-    const querySearch = 'SELECT * FROM cms_monthly_report WHERE id  = ?';
-    const queryUpdate = 'UPDATE cms_monthly_report SET ? WHERE id = ?';
+    const querySearch = 'SELECT * FROM cms_image_report WHERE id  = ?';
+    const queryUpdate = 'UPDATE cms_image_report SET ? WHERE id = ?';
 
     //masukan ke dalam model
     updateReport(res, querySearch, queryUpdate, req.params.id, data, next);
@@ -42,8 +42,8 @@ exports.updateData = (req,res,next) => {
 //delete Report
 exports.deleteData = (req, res, next) => {
     //buat query sql untuk mencari data dan hapus
-    const querySearch = 'SELECT * FROM cms_monthly_report WHERE id = ?';
-    const queryDelete = 'DELETE FROM cms_monthly_report WHERE id = ?';
+    const querySearch = 'SELECT * FROM cms_image_report WHERE id = ?';
+    const queryDelete = 'DELETE FROM cms_image_report WHERE id = ?';
 
     //masukan ke dalam model
     deleteReport(res, querySearch, queryDelete, req.params.id, next);

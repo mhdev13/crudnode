@@ -7,9 +7,12 @@ const testimoniRouter   = require('./routes/testimoni-router');
 const faqRouter         = require('./routes/faq-router');
 const priceRouter       = require('./routes/price-router');
 const reportRouter      = require('./routes/report-router');
+const reportImageRouter = require('./routes/report-image-router');
 const partnerRouter     = require('./routes/partner-router');
 const videoRouter       = require('./routes/video-router');
 const mentorRouter      = require('./routes/mentor-router');
+const wordwallRouter    = require('./routes/wordwall-router');
+const tutorRouter       = require('./routes/tutor-router');
 
 const bookRouter        = require('./routes/book.routes');
 
@@ -34,9 +37,12 @@ app.use('/api/testimoni', testimoniRouter);
 app.use('/api/faq', faqRouter);
 app.use('/api/price', priceRouter);
 app.use('/api/report', reportRouter);
+app.use('/api/report-image', reportImageRouter);
 app.use('/api/partner', partnerRouter);
 app.use('/api/video', videoRouter);
 app.use('/api/mentor', mentorRouter);
+app.use('/api/wordwall', wordwallRouter);
+app.use('/api/tutor', tutorRouter);
 
 // app.use('/api/book', bookRouter);
 
