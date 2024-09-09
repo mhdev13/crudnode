@@ -7,7 +7,7 @@ const { response } = require('express');
 exports.createData = (req, res, next) => {
     //buat variable penampung data dan query sql
     const data = {...req.body};
-    const querySql = 'INSERT INTO mau_video SET ?';
+    const querySql = 'INSERT INTO cms_video SET ?';
     
     //validasi
     var errors = validateVideo(data);
@@ -22,7 +22,7 @@ exports.createData = (req, res, next) => {
 //show Videos
 exports.readData = (req,res,next) => {
     //buat query sql
-    const querySql = "SELECT * FROM mau_video WHERE Status = 'Published'";
+    const querySql = "SELECT * FROM cms_video WHERE Status = 'Published'";
 
     //masukan ke dalam model
     getVideos(res, querySql, next);
@@ -32,8 +32,8 @@ exports.readData = (req,res,next) => {
 exports.updateData = (req,res,next) => {
     //buat variabel penampung data dan query sql
     const data = { ...req.body};
-    const querySearch = 'SELECT * FROM mau_video WHERE id  = ?';
-    const queryUpdate = 'UPDATE mau_video SET ? WHERE id = ?';
+    const querySearch = 'SELECT * FROM cms_video WHERE id  = ?';
+    const queryUpdate = 'UPDATE cms_video SET ? WHERE id = ?';
 
     //masukan ke dalam model
     updateVideo(res, querySearch, queryUpdate, req.params.id, data, next);
@@ -42,8 +42,8 @@ exports.updateData = (req,res,next) => {
 //delete Video
 exports.deleteData = (req, res, next) => {
     //buat query sql untuk mencari data dan hapus
-    const querySearch = 'SELECT * FROM mau_video WHERE id = ?';
-    const queryDelete = 'DELETE FROM mau_video WHERE id = ?';
+    const querySearch = 'SELECT * FROM cms_video WHERE id = ?';
+    const queryDelete = 'DELETE FROM cms_video WHERE id = ?';
 
     //masukan ke dalam model
     deleteVideo(res, querySearch, queryDelete, req.params.id, next);
