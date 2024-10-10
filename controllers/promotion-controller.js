@@ -22,7 +22,7 @@ exports.createData = (req, res, next) => {
 //show Promotions
 exports.readData = (req,res,next) => {
     //buat query sql
-    const querySql = 'SELECT title,image,status FROM cms_promotion';
+    const querySql = 'SELECT title,image,custom_link,status FROM cms_promotion';
 
     //masukan ke dalam model
     getPromotions(res, querySql, next);
